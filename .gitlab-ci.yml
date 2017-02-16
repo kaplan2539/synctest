@@ -8,6 +8,6 @@ sync:
   script:
     - apk update
     - apk add git
-    - git add remote github git@github.com:kaplan2539/synctest
+    - git remote add github git@github.com:kaplan2539/synctest
     - git push github
 
