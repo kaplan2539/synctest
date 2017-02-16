@@ -13,7 +13,7 @@ sync:
     - eval $(ssh-agent -s)
     # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
     - echo $(which ssh-add)
-    - TMPFILE=mktemp && chmod 0600 $TMPFILE && echo $GITHUB_DEPLOY_KEY >$TMPFILE && ssh-add $TMPFILE && rm $TMPFILE
+    - TMPFILE=$(mktemp) && chmod 0600 $TMPFILE && echo $GITHUB_DEPLOY_KEY >$TMPFILE && ssh-add $TMPFILE && rm $TMPFILE
     # For Docker builds disable host key checking. Be aware that by adding that
     # you are suspectible to man-in-the-middle attacks.
     # WARNING: Use this only with the Docker executor, if you use it with shell
