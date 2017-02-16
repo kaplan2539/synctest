@@ -7,7 +7,7 @@ sync:
   stage: sync
   script:
     - apk update
-    - apk add git ssh
+    - apk add git openssh
     - git remote show
 #    - git remote add github git@github.com:kaplan2539/synctest
     - git checkout $CI_BUILD_REF_NAME
