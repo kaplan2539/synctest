@@ -1,0 +1,11 @@
+image: debian:jessie
+
+stages:
+  - sync
+
+sync:
+  stage: sync
+  script:
+    - git add remote github git@github.com:kaplan2539/synctest
+    - git push github
+
