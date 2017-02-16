@@ -9,5 +9,6 @@ sync:
     - apk update
     - apk add git
     - git remote add github git@github.com:kaplan2539/synctest
+    - git checkout $CI_BUILD_REF_NAME
     - git push github
 
