@@ -13,7 +13,8 @@ sync:
     - echo $(which ssh-add)
     - TMPFILE=$(mktemp) && chmod 0600 $TMPFILE && echo "$GITHUB_DEPLOY_KEY" >$TMPFILE && ssh-add $TMPFILE && rm $TMPFILE
     # For Docker builds disable host key checking.
-    - mkdir -p ~/.ssh; '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - mkdir -p ~/.ssh
+    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
     - git remote show
 #    - git remote add github git@github.com:kaplan2539/synctest
