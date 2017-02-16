@@ -9,20 +9,13 @@ sync:
     - apk update
     - apk add git openssh-client
 
-    # Run ssh-agent (inside the build environment)
     - eval $(ssh-agent -s)
-    # Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
     - echo $(which ssh-add)
-    - TMPFILE=$(mktemp) && chmod 0600 $TMPFILE && echo -e "$GITHUB_DEPLOY_KEY" >$TMPFILE && wc $TMPFILE && ssh-add $TMPFILE && rm $TMPFILE
-    - ssh-add -l
-    # For Docker builds disable host key checking. Be aware that by adding that
-    # you are suspectible to man-in-the-middle attacks.
-    # WARNING: Use this only with the Docker executor, if you use it with shell
-    # you will overwrite your user's SSH config.
-    - mkdir -p ~/.ssh
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    - TMPFILE=$(mktemp) && chmod 0600 $TMPFILE && echo "$GITHUB_DEPLOY_KEY" >$TMPFILE && ssh-add $TMPFILE && rm $TMPFILE
+    # For Docker builds disable host key checking.
+    - mkdir -p ~/.ssh; - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
     - git remote show
 #    - git remote add github git@github.com:kaplan2539/synctest
-    - git checkout $CI_BUILD_REF_NAME
-    - git push github
+#    - git checkout $CI_BUILD_REF_NAME
+    - git push github $CI_BUILD_REF_NAME
