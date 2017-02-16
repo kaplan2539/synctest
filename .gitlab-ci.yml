@@ -7,7 +7,7 @@ sync:
   stage: sync
   script:
     - apk update
-    - apk install git
+    - apk add git
     - git add remote github git@github.com:kaplan2539/synctest
     - git push github
 
