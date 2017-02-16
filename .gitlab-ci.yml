@@ -18,5 +18,5 @@ sync:
 
     - git remote get-url github && git remote remove github
     - git remote add github git@github.com:kaplan2539/synctest
-#    - git fetch github
-    - git push github $CI_BUILD_REF_NAME:$CI_BUILD_REF_NAME
+    - git fetch github
+    - git push github $CI_BUILD_REF_NAME
