@@ -16,7 +16,6 @@ sync:
     - mkdir -p ~/.ssh
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-    - git remote show
-#    - git remote add github git@github.com:kaplan2539/synctest
-#    - git checkout $CI_BUILD_REF_NAME
+    - git remote get-url github
+    - git remote add github git@github.com:kaplan2539/synctest
     - git push github $CI_BUILD_REF_NAME
