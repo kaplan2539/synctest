@@ -8,6 +8,7 @@ sync:
     - master
     - develop
     - release
+    - unstable
 
   stage: sync
   script:
