@@ -23,4 +23,4 @@ sync:
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
     - git remote get-url github || git remote add github git@github.com:kaplan2539/synctest
-    - git push github HEAD:$CI_BUILD_REF_NAME
+    - git push github HEAD:refs/heads/$CI_BUILD_REF_NAME
