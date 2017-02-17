@@ -9,6 +9,7 @@ sync:
     - develop
     - release
     - unstable
+    - testing
 
   stage: sync
   script:
